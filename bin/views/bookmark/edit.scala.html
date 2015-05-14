@@ -1,0 +1,18 @@
+@* edit Template File *@
+@(bookmarkForm: Form[Bookmark])
+
+@main("Bookmarks") {
+	
+	<h3>Edit Bookmark</h3>
+	<div class="row">
+		<div class="col-md-6">
+			@helper.form(action = routes.BookmarkController.update()) {
+		    	@helper.inputText(bookmarkForm("url"), 'class -> "form-control", '_label -> null)
+		    	<input type="hidden" name="id" value="@bookmarkForm.get().id" />
+		    	<a href="@routes.BookmarkController.list()" class="btn btn-default">Back</a>
+		    	<input type="submit" class="btn btn-primary" />
+			}
+		</div>
+	</div>
+	
+}

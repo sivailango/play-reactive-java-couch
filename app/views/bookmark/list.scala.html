@@ -1,0 +1,40 @@
+@* list Template File *@
+@(bookmarkForm: Form[Bookmark], bookmarks: Collection[Bookmark]) 
+
+@main("Bookmarks") {
+	
+	<div class="row">
+		<div class="col-md-6">
+			<h2>Bookmarks</h2>
+		</div>	
+	</div>	
+	<hr style="margin-top: 0" />
+	<div class="row">
+		<div class="col-md-6">
+			<h3 style="margin-top: 0; margin-bottom: 0">Add</h3>
+			@helper.form(action = routes.BookmarkController.save()) {
+		    	@helper.inputText(bookmarkForm("url"), 'class -> "form-control", '_label -> null)
+		    	<input type="submit" class="btn btn-primary" />
+			}
+		</div>
+	</div>
+	
+	<h3>List</h3>
+	<table class="table">
+		<tr>
+			<th>URL</th>
+			<th></th>
+			<th></th>
+			<th></th>
+		</tr>
+		@for(bookmark <- bookmarks) {
+		<tr>
+			<td>@bookmark.url</td>
+			<td><a href="@routes.BookmarkController.get(bookmark.id)"><i class="glyphicon glyphicon-eye-open"></i></a></td>
+			<td><a href="@routes.BookmarkController.edit(bookmark.id)"><i class="glyphicon glyphicon-pencil"></i></a></td>
+			<td><a href="@routes.BookmarkController.delete(bookmark.id)"><i class="glyphicon glyphicon-trash"></i></a></td>
+		</tr>
+		}
+	</table>	
+	
+}

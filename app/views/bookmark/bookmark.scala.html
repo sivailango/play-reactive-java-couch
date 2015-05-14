@@ -1,0 +1,13 @@
+@* bookmark Template File *@
+@(bookmark: Bookmark) 
+
+@main("Bookmarks") {
+	
+	<h3>@bookmark.id</h3>
+	<hr />
+	<a href="@bookmark.url" target="_blank">@bookmark.url</a>
+	<small class="text-muted">@bookmark.timeStamp</small>
+	<p>&nbsp;</p>
+	<a href="@routes.BookmarkController.list()"><i class="glyphicon glyphicon-hand-left"></i> go back</a>
+	
+}
